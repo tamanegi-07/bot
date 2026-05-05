@@ -1,6 +1,7 @@
-FROM python:3.11
-WORKDIR /bot
-COPY requirements.txt /bot/
-RUN pip install -r requirements.txt
-COPY . /bot
-CMD python main.py
+FROM node:22
+WORKDIR ./
+COPY package*.json ./
+RUN npm install
+COPY .
+EXPOSE 3000
+CMD ["npm", "start"]
