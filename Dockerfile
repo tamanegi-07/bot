@@ -1,7 +1,7 @@
 FROM node:22
 WORKDIR ./
 COPY package*.json ./
-RUN npm RUN npm install
+RUN npm install
 COPY . .
 EXPOSE 3000
 CMD ["npm", "start"]
