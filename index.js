@@ -19,3 +19,17 @@ var port = 3000;
 app.listen(port, () => {
   console.log(`Good morning!!`);
 });
+
+client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+    if (interaction.commandName == aisatu.data.name) {
+        try {
+            await aisatu.execute(interaction);
+        } catch (error) {
+            console.error(error);
+            await interaction.reply({content: 'コマンド実行時にエラーになりました。',ephemeral:true});
+        }
+    } else {
+        await interaction.reply(`不明なコマンドが実行されました。`)
+    }
+});
